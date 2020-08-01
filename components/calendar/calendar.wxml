@@ -1,0 +1,108 @@
+
+<wxs src="./time.wxs" module="filterNum" />
+<view class="header space-between">
+  <view class="btn flex-center" catchtap="dateSelection">
+    <image src="/static/Icon/calendar.png" class="selectDayIcon"></image>
+    <view class="text">{{selectDay}}</view>
+  </view>
+</view>
+<view wx:if='{{!calShow}}' class="{{isOpen?'':'box'}}" catchtap='packup'>
+  <view wx:if='{{!calShow}}' class="{{isOpen?'':'calendar-box'}} {{dateShow?'active':''}}">
+    <view class="dateTitle">选择时间段</view>
+    <view class="chooesBox">
+      <view data-index="1" catchtap="bindGetChooesDate" class="{{chooesItem == 1? 'chooesItemActive':'chooesItem'}}">最近7天</view>
+      <view data-index="2" catchtap="bindGetChooesDate" class="{{chooesItem == 2? 'chooesItemActive':'chooesItem'}}">最近30天</view>
+      <view data-index="3" catchtap="bindGetChooesDate" class="{{chooesItem == 3? 'chooesItemActive':'chooesItem'}}">最近90天</view>
+      <view data-index="4" catchtap="bindGetChooesDate" class="{{chooesItem == 4? 'chooesItemActive':'chooesItem'}}">最近一年</view>
+    </view>
+
+    <view class="calendar-header">
+      <view>日</view>
+      <view>一</view>
+      <view>二</view>
+      <view>三</view>
+      <view>四</view>
+      <view>五</view>
+      <view>六</view>
+    </view>
+
+    <scroll-view class="mainDate" scroll-y="true" bindscroll="bindScrollTop1" bindscrolltoupper="bindScrollTop" bindscrolltolower="bindscrolltolower" scroll-top="{{scrolltop}}">
+
+
+      <!-- back -->
+      <view class="NowDate">
+        <text>{{selectDayBack}}</text>
+      </view>
+      <view class="calendar-body">
+        <block wx:for="{{canlenderBack.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+          <view class="calender-body-date-week">
+            <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+              <view class="date {{canlenderBack.month === day.month? '' : 'placeholder'}} " data-week="{{week}}" data-index="{{index}}" catchtap='selectDay' data-type="back">
+              <view class="{{ selectDayFrist == canlenderBack.year+'/'+ day.month+'/'+day.date ? 'firstBoxActive':''}} {{selectDayScend == canlenderBack.year+'/'+ day.month+'/'+day.date ? 'ScendActive':''}}   {{filterNum.time(canlenderBack.year+'/'+ day.month+'/'+day.date,selectDayFrist) && filterNum.time(selectDayScend,canlenderBack.year+'/'+ day.month+'/'+day.date)? 'mainActive':''}}" >
+                  {{day.date }}
+                </view>
+                <view wx:if="{{day.have}}" class="data-circle"></view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+
+
+  <!-- now -->
+      <view class="NowDate">
+        <text>{{selectDay}}</text>
+      </view>
+      <view class="calendar-body">
+        <block wx:for="{{canlender.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+          <view class="calender-body-date-week">
+            <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+              <view class="date {{canlender.month === day.month? '' : 'placeholder'}} " data-week="{{week}}" data-index="{{index}}" catchtap='selectDay' data-type="now" data-time="{{canlender.year+'-'+ day.month+'-'+day.date}}" data-first="{{selectDayFrist}}">
+                  <!-- {{canlenderBack.year 当年}}   -->
+                  <!-- {{day.month}}  当月 -->
+                  <!-- {{_dateTmp2}} 当月完整 2020年7月30日-->
+                  <!-- {{day.date 日}} -->
+  <view class="{{ selectDayFrist == canlenderBack.year+'/'+ day.month+'/'+day.date ? 'firstBoxActive':''}} {{selectDayScend == canlenderBack.year+'/'+ day.month+'/'+day.date ? 'ScendActive':''}}   {{filterNum.time(canlenderBack.year+'/'+ day.month+'/'+day.date,selectDayFrist) && filterNum.time(selectDayScend,canlenderBack.year+'/'+ day.month+'/'+day.date)? 'mainActive':''}}" >
+                  {{day.date }}
+                </view>
+                <view wx:if="{{day.have}}" class="data-circle"></view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+
+
+
+
+
+
+  <!-- to -->
+      <view class="NowDate" wx:if="{{toDataShow}}">
+        <text>{{selectDayTo}}</text>
+      </view>
+      <view class="calendar-body" wx:if="{{toDataShow}}">
+        <block wx:for="{{canlenderTo.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+          <view class="calender-body-date-week">
+            <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+              <view class="date {{canlenderTo.month === day.month? '' : 'placeholder'}} " data-week="{{week}}" data-index="{{index}}" catchtap='selectDay' data-type="to">
+                  <!-- {{canlenderBack.year 当年}}   -->
+                  <!-- {{day.month}}  当月 -->
+                  <!-- {{_dateTmp2}} 当月完整 2020年7月30日-->
+                  <!-- {{day.date 日}} -->
+                <view class="{{ selectDayFrist == canlenderTo.year+'-'+ day.month+'-'+day.date ? 'firstBoxActive':''}} {{selectDayScend == canlenderTo.year+'-'+ day.month+'-'+day.date ? 'ScendActive':''}}  {{filterNum.time(canlenderTo.year+'-'+ day.month+'-'+day.date,selectDayFrist) && filterNum.time(selectDayScend,canlenderTo.year+'-'+ day.month+'-'+day.date)? 'mainActive':''}}">
+                  {{day.date }}
+                </view>
+                <view wx:if="{{day.have}}" class="data-circle"></view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+
+    </scroll-view>
+
+    <view class="clickTip">请点击日期，选择您希望查看的区间</view>
+    <view class="packup" catchtap='packup'>确定</view>
+  </view>
+</view>
