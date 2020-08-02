@@ -1,7 +1,6 @@
 # 尺子组件预览
 
 ![aYShJP.png](https://s1.ax1x.com/2020/08/02/aYShJP.png)
-![](http://www.baidu.com/img/bdlogo.gif)
 
 # 把组件接入页面json文件
 
