@@ -2,8 +2,8 @@
 const app = getApp()
 Page({
   data: {
-    val: 160,
-    value: 160,
+    val: 60,
+    value: '',
   },
   bindvalue(e) {
     this.setData({

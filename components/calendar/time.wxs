@@ -1,8 +1,0 @@
-
-var time = function (starttime,endtime) {
-  return getDate(starttime) - getDate(endtime) > 0 ? true : false;
-}
-
-module.exports = {
-  time: time
-}

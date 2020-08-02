@@ -1,6 +1,8 @@
 {
   "pages":[
-    "pages/index/index"
+    "pages/scale/scale",
+    "pages/calendar/calendar",
+    "pages/start/start"
   ],
   "window":{
     "backgroundTextStyle":"light",

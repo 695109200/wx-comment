@@ -1,0 +1,1 @@
+<start start="4" stateList="{{stateList}}" bind:get="getStart"></start>

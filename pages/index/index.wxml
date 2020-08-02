@@ -1,8 +1,0 @@
-
-<!-- 尺子组件 -->
-<view class="tallBox">
-  <view class="tallTxt2">{{value}}</view>
-  <view class='wrap'>
-    <scale min="30" max="300" int="{{true}}" step="1" fiexNum="60" single="10" h="60" active="{{val}}" styles="{{styles[1]}}" bindvalue="bindvalue"></scale>
-  </view>
-</view>

@@ -32,7 +32,7 @@ Component({
     // 卡尺左右的余量 ，最为60
     fiexNum: {
       type: Number,
-      value: 60
+      value: 0
     },
     // 高度
     h: {

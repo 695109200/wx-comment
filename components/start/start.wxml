@@ -1,0 +1,4 @@
+<view class="state">{{state}}</view>
+<view class="StartBox">
+  <image src="{{item == 0 ? '/static/Icon/s.png' : '/static/Icon/s2.png'}}" class="start" catchtap="currStrat" wx:for="{{startL}}" data-index="{{index+1}}"></image>
+</view>
